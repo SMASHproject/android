@@ -7,6 +7,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="menu"
+        android:text="Coffee"
         android:id="@+id/textView" />
+
+    <GridLayout
+        android:id="@+id/menu_grid1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        </GridLayout>
 </LinearLayout>

@@ -16,7 +16,11 @@ public class MainFragment extends MainActivity.PlaceholderFragment implements Vi
     OnMenuClickListener listener;
 
     //test
-    Button btn;
+    Button btnToMenu;
+    Button btnToSignup;
+
+    //constants
+    public final static int ORDER_BUTTON_CLICKED = 0x10;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,16 +32,26 @@ public class MainFragment extends MainActivity.PlaceholderFragment implements Vi
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-        //test
-        btn = (Button)rootView.findViewById(R.id.button);
-        btn.setOnClickListener(this);
+        //Buttons in MainMenu
+        btnToMenu = (Button)rootView.findViewById(R.id.button_to_order);
+        btnToMenu.setOnClickListener(this);
+
+        btnToSignup = (Button)rootView.findViewById(R.id.button_to_signup);
+        btnToSignup.setOnClickListener(this);
 
         return rootView;
     }
 
     @Override
     public void onClick(View v) {
-        listener.onMenuClicked(2);
+
+        int id = v.getId();
+
+        if(id == R.id.button_to_order){
+            listener.onMenuClicked(ORDER_BUTTON_CLICKED);
+        }else if(id == R.id.button_to_signup){
+
+        }
     }
 
     @Override

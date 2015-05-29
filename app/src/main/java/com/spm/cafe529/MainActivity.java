@@ -14,6 +14,8 @@ public class MainActivity extends FragmentActivity implements OnMenuClickListene
     private final static int MENU_FRAGMENT = 3;
     private final static int WISHLIST_FRAGMENT = 4;
 
+    private final static int ORDER_BUTTON_CLICKED = 0x10;
+
 
     Fragment dummyFragment;
 //    Fragment subFragment;
@@ -78,9 +80,13 @@ public class MainActivity extends FragmentActivity implements OnMenuClickListene
     }
 
     @Override
-    public void onMenuClicked(int i) {
-        FragmentManager fragmentManager = dummyFragment.getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.main_layout,PlaceholderFragment.newInstance(3)).commit();
+    public void onMenuClicked(int selector) {
+        if(selector == ORDER_BUTTON_CLICKED){
+            FragmentManager fragmentManager = dummyFragment.getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.main_layout,PlaceholderFragment.newInstance(MENU_FRAGMENT)).commit();
+            fragmentManager.beginTransaction().replace(R.id.sub_layout,PlaceholderFragment.newInstance(WISHLIST_FRAGMENT)).commit();
+        }
+
     }
 
 
