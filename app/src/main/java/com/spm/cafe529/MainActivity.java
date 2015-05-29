@@ -90,7 +90,6 @@ public class MainActivity extends FragmentActivity implements OnMenuClickListene
         }
 
     }
-
     @Override
     public void onMenuClicked(int selector) {
         if(selector == ORDER_BUTTON_CLICKED){
