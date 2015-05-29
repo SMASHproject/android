@@ -1,13 +1,16 @@
 package com.spm.cafe529;
 
-import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
+
+import com.spm.cafe529.Listener.OnMenuClickListener;
+import com.spm.cafe529.Listener.OnWishItemClickListener;
 
 
-public class MainActivity extends FragmentActivity implements OnMenuClickListener{
+public class MainActivity extends FragmentActivity implements OnMenuClickListener, OnWishItemClickListener {
 
     private final static int ADVERTISE_FRAGMENT = 1;
     private final static int MAIN_FRAGMENT = 2;
@@ -18,7 +21,7 @@ public class MainActivity extends FragmentActivity implements OnMenuClickListene
 
 
     Fragment dummyFragment;
-//    Fragment subFragment;
+    static WishlistFragment wishlistFragment;
 
 
     @Override
@@ -39,6 +42,14 @@ public class MainActivity extends FragmentActivity implements OnMenuClickListene
 
     }
 
+    @Override
+    public void OnItemClicked(String item) {
+
+//        WishlistFragment wishlistFragment = (WishlistFragment) getSupportFragmentManager().findFragmentById(R.id.wishlist_fragment);
+//        wishlistFragment.updateItem(item);\
+        if (wishlistFragment != null)
+            wishlistFragment.updateItem(item);
+    }
 
 
     public static class PlaceholderFragment extends Fragment {
@@ -68,6 +79,7 @@ public class MainActivity extends FragmentActivity implements OnMenuClickListene
                     break;
                 case WISHLIST_FRAGMENT:
                     fragment = new WishlistFragment();
+                    wishlistFragment = (WishlistFragment) fragment;
                     break;
             }
 
