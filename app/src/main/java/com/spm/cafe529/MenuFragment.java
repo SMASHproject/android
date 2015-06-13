@@ -1,6 +1,7 @@
 package com.spm.cafe529;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -9,7 +10,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,10 +17,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.spm.cafe529.Database.Database;
+import com.spm.cafe529.Listener.OnWishItemClickListener;
 import com.spm.cafe529.Struct.Menu;
 
 import org.w3c.dom.Text;
@@ -37,6 +37,8 @@ public class MenuFragment extends MainActivity.PlaceholderFragment implements Vi
     private GridLayout menuGrid1;
 
     private Database mHelper;
+
+    OnWishItemClickListener listener;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -124,10 +126,21 @@ public class MenuFragment extends MainActivity.PlaceholderFragment implements Vi
     }
 
     @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        try {
+            listener = (OnWishItemClickListener) activity;
+        } catch (ClassCastException e){
+            throw new ClassCastException(activity.toString() + "must implement onMenuClickListener");
+        }
+    }
+
+    @Override
     public void onClick(View v) {
         SQLiteDatabase db = mHelper.getReadableDatabase();
         // DB 접근해서 데이터 가져옴.
         Log.d(v.getTag().toString(), "" + mHelper.getPrice(db, v.getTag().toString()));
-
+        listener.OnItemClicked(v.getTag().toString());
     }
 }

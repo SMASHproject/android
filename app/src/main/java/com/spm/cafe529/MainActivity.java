@@ -1,10 +1,13 @@
 package com.spm.cafe529;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.spm.cafe529.Listener.OnMenuClickListener;
 import com.spm.cafe529.Listener.OnWishItemClickListener;
@@ -12,35 +15,33 @@ import com.spm.cafe529.Listener.OnWishItemClickListener;
 
 public class MainActivity extends FragmentActivity implements OnMenuClickListener, OnWishItemClickListener {
 
-    private final static int ADVERTISE_FRAGMENT = 1;
-    private final static int MAIN_FRAGMENT = 2;
-    private final static int MENU_FRAGMENT = 3;
-    private final static int WISHLIST_FRAGMENT = 4;
+            private final static int ADVERTISE_FRAGMENT = 1;
+            private final static int MAIN_FRAGMENT = 2;
+            private final static int MENU_FRAGMENT = 3;
+            private final static int WISHLIST_FRAGMENT = 4;
 
-    private final static int ORDER_BUTTON_CLICKED = 0x10;
-
-
-    Fragment dummyFragment;
-    static WishlistFragment wishlistFragment;
+            private final static int ORDER_BUTTON_CLICKED = 0x10;
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+            Fragment dummyFragment;
+            static WishlistFragment wishlistFragment;
 
-        //Fragment initialize
-        dummyFragment = getSupportFragmentManager().findFragmentById(R.id.dummy_fragment);
+
+            @Override
+            protected void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                setContentView(R.layout.activity_main);
+
+                //Fragment initialize
+                dummyFragment = getSupportFragmentManager().findFragmentById(R.id.dummy_fragment);
 //
-        //first transaction
-        FragmentManager fragmentManager = dummyFragment.getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.main_layout,PlaceholderFragment.newInstance(ADVERTISE_FRAGMENT)).commit();
-        fragmentManager = dummyFragment.getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.sub_layout,PlaceholderFragment.newInstance(MAIN_FRAGMENT)).commit();
+                //first transaction
+                FragmentManager fragmentManager = dummyFragment.getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.main_layout,PlaceholderFragment.newInstance(ADVERTISE_FRAGMENT)).commit();
+                fragmentManager = dummyFragment.getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.sub_layout,PlaceholderFragment.newInstance(MAIN_FRAGMENT)).commit();
 
-
-
-    }
+            }
 
     @Override
     public void OnItemClicked(String item) {
