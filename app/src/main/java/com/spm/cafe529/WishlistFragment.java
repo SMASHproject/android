@@ -43,6 +43,7 @@ public class WishlistFragment extends MainActivity.PlaceholderFragment implement
     }
 
     public void updateItem(String item){
+
         adapter.addItem(item);
 
     }

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.widget.Toast;
 
 import com.spm.cafe529.Listener.OnMenuClickListener;
@@ -101,6 +102,14 @@ public class MainActivity extends FragmentActivity implements OnMenuClickListene
 
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
 
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            Log.v("KEy Pressed", "BACK KEY");
+            return true; //나중에 바꿔줄것
+        }
 
+        return super.onKeyDown(keyCode, event);
+    }
 }

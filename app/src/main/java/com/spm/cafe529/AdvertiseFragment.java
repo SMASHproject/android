@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.MediaController;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 /**
@@ -16,11 +18,13 @@ import android.widget.VideoView;
  */
 public class AdvertiseFragment extends MainActivity.PlaceholderFragment implements View.OnClickListener{
 
-
-    VideoView videoView;
-
     //test
     public final static String VIDEO_URL = "http://sites.google.com/site/ubiaccessmobile/sample_video.mp4";
+    public final static int URL = 1;
+    public final static int SDCARD = 2;
+    VideoView videoView;
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,50 +34,42 @@ public class AdvertiseFragment extends MainActivity.PlaceholderFragment implemen
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_advertise, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_advertise, container, false);
 
-        /* MEDIA PLAYER
-
-        //Video View
+        //VideoView
         videoView = (VideoView) rootView.findViewById(R.id.advertise_videoview);
-        videoView.setVideoURI(Uri.parse(VIDEO_URL));
 
-        //set Media Controller
+        int type = URL;
+        switch (type) {
+            case URL :
+                videoView.setVideoURI(Uri.parse(VIDEO_URL));
+                break;
+
+            case SDCARD :
+                String path = Environment.getExternalStorageDirectory() + "/TestVideo6.mp4";
+                videoView.setVideoPath(path);
+                break;
+        }
+
         MediaController controller = new MediaController(rootView.getContext());
         videoView.setMediaController(controller);
 
-        // 준비하는 과정을 미리함
         videoView.requestFocus();
 
-        // 동영상이 재생준비가 완료되엇을떄를 알수있는 리스너 (실제 웹에서 영상을 다운받아 출력할때 많이 사용됨)
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-
-            // 동영상 재생준비가 완료된후 호출되는 메서드
             @Override
             public void onPrepared(MediaPlayer mp) {
-
-                // 비디오를 처음부터 재생할땐 0
-                videoView.seekTo(0);
-                // 비디오 재생 시작
-                videoView.start();
-
-
+                Toast.makeText(rootView.getContext(), "재생버튼을 누르세요.", Toast.LENGTH_SHORT).show();
             }
         });
 
-        // 동영상 재생이 완료된걸 알수있는 리스너
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-
-            // 동영상 재생이 완료된후 호출되는 메서드
-            public void onCompletion(MediaPlayer player) {
-                // 비디오를 처음부터 재생할땐 0
-                videoView.seekTo(0);
-                // 비디오 재생 시작
-                videoView.start();
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                Toast.makeText(rootView.getContext(), "동영상재생완료", Toast.LENGTH_SHORT).show();
             }
         });
 
-        */
 
         return rootView;
 
@@ -82,6 +78,7 @@ public class AdvertiseFragment extends MainActivity.PlaceholderFragment implemen
 
     @Override
     public void onClick(View v) {
+
 
     }
 

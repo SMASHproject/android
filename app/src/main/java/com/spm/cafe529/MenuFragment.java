@@ -12,6 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.spm.cafe529.Database.Database;
+import com.spm.cafe529.Library.RoundedAvatarDrawable;
 import com.spm.cafe529.Listener.OnWishItemClickListener;
 import com.spm.cafe529.Struct.Menu;
 
@@ -37,6 +39,8 @@ public class MenuFragment extends MainActivity.PlaceholderFragment implements Vi
     private GridLayout menuGrid1;
 
     private Database mHelper;
+
+    int mWidth = 180;
 
     OnWishItemClickListener listener;
 
@@ -84,7 +88,7 @@ public class MenuFragment extends MainActivity.PlaceholderFragment implements Vi
         return false;
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void fillGridLayout (GridLayout gl, ArrayList<Menu> list, Context context) {
         LinearLayout ll;
         TextView image, name, price;
@@ -98,22 +102,29 @@ public class MenuFragment extends MainActivity.PlaceholderFragment implements Vi
             //bitmap
             Log.v("path", list.get(i).getImagepath());
             Bitmap bitmap = BitmapFactory.decodeFile(list.get(i).getImagepath());
-            Drawable drawable = new BitmapDrawable(getResources(),bitmap);
+            RoundedAvatarDrawable drawable = new RoundedAvatarDrawable(bitmap);
+            //Drawable drawable = new BitmapDrawable(getResources(),bitmap);
             image = new TextView(context);
             name = new TextView(context);
             price = new TextView(context);
 
             image.setBackground(drawable);
-            name.setText(list.get(i).getName());
-            price.setText(""+list.get(i).getPrice());
 
-            ll.addView(image,200,200);
+            name.setText(list.get(i).getName());
+            name.setWidth(mWidth);
+            name.setGravity(Gravity.CENTER);
+
+            price.setText("" + list.get(i).getPrice());
+            price.setWidth(mWidth);
+            price.setGravity(Gravity.CENTER);
+
+            ll.addView(image, mWidth, mWidth);
             ll.addView(name);
             ll.addView(price);
 
             ll.setTag(name.getText());
             ll.setOnClickListener(this);
-
+            ll.setPadding(10,10,40,0);
             gl.addView(ll);
         }
     }

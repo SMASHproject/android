@@ -38,12 +38,13 @@ public class WishlistAdapter extends ArrayAdapter<WishItem> implements View.OnCl
         this.parent = parent;
         if (convertView == null) {
             convertView = inflater.inflate(resource, null);
-
+        }
             //textview
             TextView itemTextView = (TextView) convertView.findViewById(R.id.item_name);
             TextView quantityTextView = (TextView) convertView.findViewById(R.id.item_quantity);
 
-            itemTextView.setText(position + getItem(position).getItemName());
+            Log.v("listview item", position + getItem(position).getItemName() + getItem(position).getItemCount());
+            itemTextView.setText(getItem(position).getItemName());
             quantityTextView.setText(getItem(position).getItemCount()+"");
 
             //button
@@ -54,7 +55,6 @@ public class WishlistAdapter extends ArrayAdapter<WishItem> implements View.OnCl
             plusBtn.setTag(position*10 + 1); // 31
             minusBtn.setTag(position * 10 + 2);  // 32
 
-        }
 
         return convertView;
     }
@@ -75,11 +75,9 @@ public class WishlistAdapter extends ArrayAdapter<WishItem> implements View.OnCl
     public void addItem(String item) {
         for (int i=0; i<list.size(); i++){
 
-            Log.v("getItemName","a" + list.get(i).getItemName());
-
             if(list.get(i).getItemName().equals(item)){
                 if(getItem(i).calcItem(1)){
-                    getView(i,null,parent);
+                    notifyDataSetChanged();
                 }
                 return;
             }
@@ -89,4 +87,6 @@ public class WishlistAdapter extends ArrayAdapter<WishItem> implements View.OnCl
         add(wishItem);
 
     }
+
+
 }
