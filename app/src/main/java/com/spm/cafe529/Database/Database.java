@@ -41,14 +41,14 @@ public class Database extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void putMenu (SQLiteDatabase db, String name, int price, String path, String type) {
+    public void putMenu(SQLiteDatabase db, String name, int price, String path, String type) {
         if (db == null || name == null || type == null)
             return;
 
-        db.execSQL("INSERT OR REPLACE INTO " + TABLE_NAME + " VALUES ('" + name + "', " + price + ", '" + path + "', '"+ type +"');");
+        db.execSQL("INSERT OR REPLACE INTO " + TABLE_NAME + " VALUES ('" + name + "', " + price + ", '" + path + "', '" + type + "');");
     }
 
-    public ArrayList<Menu> getMenu (SQLiteDatabase db, String type) {
+    public ArrayList<Menu> getMenu(SQLiteDatabase db, String type) {
         if (type == null || db == null)
             return null;
 
@@ -61,13 +61,13 @@ public class Database extends SQLiteOpenHelper {
         //cursor.moveToNext();
 
         while (cursor.moveToNext()) {
-            list.add(new Menu (cursor.getString(0), cursor.getInt(1),cursor.getString(2)));
+            list.add(new Menu(cursor.getString(0), cursor.getInt(1), cursor.getString(2)));
         }
 
         return list;
     }
 
-    public int getPrice (SQLiteDatabase db, String name) {
+    public int getPrice(SQLiteDatabase db, String name) {
         Cursor cursor = db.rawQuery("SELECT " +
                 COLUMN_MENU_PRICE +
                 " FROM " + TABLE_NAME + " WHERE name='" + name + "';", null);

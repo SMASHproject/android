@@ -7,7 +7,7 @@ public class WishItem {
     String itemName;
     int itemCount;
 
-    public WishItem (String itemName, int itemCount) {
+    public WishItem(String itemName, int itemCount) {
         this.itemName = itemName;
         this.itemCount = itemCount;
     }
@@ -32,13 +32,13 @@ public class WishItem {
 
         try {
             if (type == 1) { //++
-                if(itemCount < 99){
+                if (itemCount < 99) {
                     itemCount++;
                     return true;
                 }
 
             } else if (type == 2) { //--
-                if(itemCount > 0){
+                if (itemCount > 0) {
                     itemCount--;
                     return true;
                 }
@@ -46,7 +46,7 @@ public class WishItem {
 
             return false;
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             return false;
         }
     }

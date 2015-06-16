@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
+    android:background="#ffffff"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/wishlist_title"
@@ -10,17 +11,17 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
 
-        android:textSize="30dp"
-        android:paddingLeft="30dp"
-        android:textColor="#ffffff"
-        android:typeface="sans"
-        android:text="wishlist"
-        android:gravity="center_vertical"
-
-        android:background="#323232"
-
         android:layout_weight="1.3"
-        android:textStyle="bold|italic" />
+        android:background="#323232"
+        android:gravity="center_vertical"
+        android:paddingLeft="30dp"
+        android:text="wishlist"
+        android:textColor="#ffffff"
+
+        android:textSize="30dp"
+
+        android:textStyle="bold|italic"
+        android:typeface="sans" />
 
     <ListView
         android:id="@+id/wishlist_list"
@@ -34,7 +35,7 @@
 
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:text="       ORDER       "
         android:layout_gravity="center"
-        android:layout_weight="1.3"/>
+        android:layout_weight="1.3"
+        android:text="       ORDER       " />
 </LinearLayout>

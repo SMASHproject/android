@@ -1,6 +1,5 @@
 package com.spm.cafe529.Library;
 
-import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
@@ -12,7 +11,6 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 
 /**
  * Created by sungho2 on 2015-06-14.
@@ -48,7 +46,7 @@ public class RoundedAvatarDrawable extends Drawable {
     public void draw(Canvas canvas) {
         RectF lineRectF = new RectF();
         lineRectF.set(mRectF.left + 6, mRectF.top + 6, mRectF.right - 6, mRectF.bottom - 6);
-        canvas.drawOval(mRectF,mOutlinePaint);
+        canvas.drawOval(mRectF, mOutlinePaint);
         canvas.drawOval(lineRectF, mPaint);
     }
 

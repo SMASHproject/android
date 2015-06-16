@@ -20,11 +20,9 @@ import org.json.JSONObject;
 /**
  * Created by park on 2015. 6. 15..
  */
-public class SignUpFragment extends MainActivity.PlaceholderFragment implements View.OnClickListener{
-    OnMenuClickListener listener;
-
+public class SignUpFragment extends MainActivity.PlaceholderFragment implements View.OnClickListener {
     public final static int MAIN_BUTTON_CLICKED = 0x30;
-
+    OnMenuClickListener listener;
     EditText txtId;
     EditText txtPwd;
     Button okBtn;
@@ -51,6 +49,7 @@ public class SignUpFragment extends MainActivity.PlaceholderFragment implements 
 
         taskListener = new TaskListener() {
             String state;
+
             @Override
             public void onReceived(JSONObject json) {
                 try {
@@ -92,7 +91,7 @@ public class SignUpFragment extends MainActivity.PlaceholderFragment implements 
             HttpTask httpTask = new HttpTask("http://166.104.245.69/register.php", object, null);
             httpTask.execute();
 
-            Log.d ("Send", " register info");
+            Log.d("Send", " register info");
         }
     }
 
@@ -102,7 +101,7 @@ public class SignUpFragment extends MainActivity.PlaceholderFragment implements 
 
         try {
             listener = (OnMenuClickListener) activity;
-        } catch (ClassCastException e){
+        } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString() + "must implement onMenuClickListener");
         }
     }

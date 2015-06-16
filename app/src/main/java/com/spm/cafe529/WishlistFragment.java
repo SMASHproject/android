@@ -68,10 +68,11 @@ public class WishlistFragment extends MainActivity.PlaceholderFragment implement
 
         taskListener = new TaskListener() {
             String state;
+
             @Override
             public void onReceived(JSONObject json) {
                 try {
-                    Log.d ("JSON.tostring:", json.toString());
+                    Log.d("JSON.tostring:", json.toString());
                     state = json.getString("state");
                     if (state.equals("success")) {
                         Toast.makeText(getActivity(), "Order Accepted", Toast.LENGTH_LONG).show();
@@ -93,7 +94,7 @@ public class WishlistFragment extends MainActivity.PlaceholderFragment implement
         return rootView;
     }
 
-    public void updateItem(String item){
+    public void updateItem(String item) {
 
         adapter.addItem(item);
 
@@ -119,21 +120,20 @@ public class WishlistFragment extends MainActivity.PlaceholderFragment implement
                     if (txtUsername.getText().toString().trim().length() > 0 && txtPassword.getText().toString().trim().length() > 0) {
                         //Here, validate code.
                         JSONObject object = new JSONObject();
-                        try{
-                            object.put("phone_number",txtUsername.getText().toString());
-                            object.put("password",txtPassword.getText().toString());
-                        }catch (Exception e){
+                        try {
+                            object.put("phone_number", txtUsername.getText().toString());
+                            object.put("password", txtPassword.getText().toString());
+                        } catch (Exception e) {
                             e.printStackTrace();
                             return;
                         }
 
-                        HttpTask httpTask = new HttpTask("http://166.104.245.69/login.php",object, taskListener);
+                        HttpTask httpTask = new HttpTask("http://166.104.245.69/login.php", object, taskListener);
                         httpTask.execute();
 
                         //Toast.makeText(getActivity(), "Order Accepted", Toast.LENGTH_LONG).show();
                         //login.dismiss();
-                    }
-                    else {
+                    } else {
                         Toast.makeText(getActivity(), "Please enter name & pwd", Toast.LENGTH_LONG).show();
                     }
                 }
@@ -175,7 +175,7 @@ public class WishlistFragment extends MainActivity.PlaceholderFragment implement
             }
 
             return result;
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             client.getConnectionManager().shutdown();
             return "";
@@ -187,7 +187,7 @@ public class WishlistFragment extends MainActivity.PlaceholderFragment implement
         super.onAttach(activity);
         try {
             listener = (OnMenuClickListener) activity;
-        } catch (ClassCastException e){
+        } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString() + "must implement onMenuClickListener");
         }
     }

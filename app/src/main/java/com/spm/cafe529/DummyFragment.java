@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 /**
  * Created by 성호 on 2015-04-07.
  */
-public class DummyFragment extends Fragment{
+public class DummyFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -3,12 +3,10 @@ package com.spm.cafe529.Library;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import org.apache.http.HttpConnection;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
@@ -18,8 +16,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +38,6 @@ public class HttpTask extends AsyncTask<Void, Void, JSONObject> {
     protected JSONObject doInBackground(Void... params) {
 
 
-
         try {
             DefaultHttpClient httpClient = new DefaultHttpClient();
 
@@ -50,7 +45,7 @@ public class HttpTask extends AsyncTask<Void, Void, JSONObject> {
 
             List<BasicNameValuePair> nameValue = new ArrayList<BasicNameValuePair>(2);
 
-            Log.v("JSON",json.toString());
+            Log.v("JSON", json.toString());
             nameValue.add(new BasicNameValuePair("data", json.toString()));
             //웹 접속 - utf-8 방식으로
             httpPost.setEntity(new UrlEncodedFormEntity(nameValue));
@@ -82,7 +77,7 @@ public class HttpTask extends AsyncTask<Void, Void, JSONObject> {
     @Override
     protected void onPostExecute(JSONObject jsonObject) {
 
-        if(jsonObject == null) taskListener.onCancelled();
+        if (jsonObject == null) taskListener.onCancelled();
         else {
             taskListener.onReceived(jsonObject);
         }

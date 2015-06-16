@@ -1,7 +1,5 @@
 package com.spm.cafe529.Struct;
 
-import android.widget.TextView;
-
 /**
  * Created by 성호 on 2015-04-10.
  */
@@ -10,7 +8,7 @@ public class Menu {
     private String name;
     private int price;
 
-    public Menu (String name, int price, String path) {
+    public Menu(String name, int price, String path) {
         this.imagepath = path;
         this.name = name;
         this.price = price;

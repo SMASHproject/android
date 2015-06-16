@@ -12,8 +12,6 @@ import android.widget.TextView;
 import com.spm.cafe529.Struct.WishItem;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.zip.Inflater;
 
 /**
  * Created by sungho2 on 2015-05-29.
@@ -39,21 +37,21 @@ public class WishlistAdapter extends ArrayAdapter<WishItem> implements View.OnCl
         if (convertView == null) {
             convertView = inflater.inflate(resource, null);
         }
-            //textview
-            TextView itemTextView = (TextView) convertView.findViewById(R.id.item_name);
-            TextView quantityTextView = (TextView) convertView.findViewById(R.id.item_quantity);
+        //textview
+        TextView itemTextView = (TextView) convertView.findViewById(R.id.item_name);
+        TextView quantityTextView = (TextView) convertView.findViewById(R.id.item_quantity);
 
-            Log.v("listview item", position + getItem(position).getItemName() + getItem(position).getItemCount());
-            itemTextView.setText(getItem(position).getItemName());
-            quantityTextView.setText(getItem(position).getItemCount()+"");
+        Log.v("listview item", position + getItem(position).getItemName() + getItem(position).getItemCount());
+        itemTextView.setText(getItem(position).getItemName());
+        quantityTextView.setText(getItem(position).getItemCount() + "");
 
-            //button
-            Button plusBtn = (Button) convertView.findViewById(R.id.plus_btn);
-            Button minusBtn = (Button) convertView.findViewById(R.id.minus_btn);
-            plusBtn.setOnClickListener(this);
-            minusBtn.setOnClickListener(this);
-            plusBtn.setTag(position*10 + 1); // 31
-            minusBtn.setTag(position * 10 + 2);  // 32
+        //button
+        Button plusBtn = (Button) convertView.findViewById(R.id.plus_btn);
+        Button minusBtn = (Button) convertView.findViewById(R.id.minus_btn);
+        plusBtn.setOnClickListener(this);
+        minusBtn.setOnClickListener(this);
+        plusBtn.setTag(position * 10 + 1); // 31
+        minusBtn.setTag(position * 10 + 2);  // 32
 
 
         return convertView;
@@ -62,21 +60,21 @@ public class WishlistAdapter extends ArrayAdapter<WishItem> implements View.OnCl
     @Override
     public void onClick(View v) {
 
-        Log.v("Clicked", "tag : "+v.getTag());
+        Log.v("Clicked", "tag : " + v.getTag());
 
         int tag = (int) v.getTag();
         int position = tag / 10;
         int type = tag % 10;
 
-        if(getItem(position).calcItem(type));
+        if (getItem(position).calcItem(type)) ;
 
     }
 
     public void addItem(String item) {
-        for (int i=0; i<list.size(); i++){
+        for (int i = 0; i < list.size(); i++) {
 
-            if(list.get(i).getItemName().equals(item)){
-                if(getItem(i).calcItem(1)){
+            if (list.get(i).getItemName().equals(item)) {
+                if (getItem(i).calcItem(1)) {
                     notifyDataSetChanged();
                 }
                 return;

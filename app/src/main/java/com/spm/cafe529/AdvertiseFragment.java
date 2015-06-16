@@ -1,6 +1,5 @@
 package com.spm.cafe529;
 
-import android.app.Activity;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,14 +15,13 @@ import android.widget.VideoView;
 /**
  * Created by 성호 on 2015-04-07.
  */
-public class AdvertiseFragment extends MainActivity.PlaceholderFragment implements View.OnClickListener{
+public class AdvertiseFragment extends MainActivity.PlaceholderFragment implements View.OnClickListener {
 
     //test
     public final static String VIDEO_URL = "http://sites.google.com/site/ubiaccessmobile/sample_video.mp4";
     public final static int URL = 1;
     public final static int SDCARD = 2;
     VideoView videoView;
-
 
 
     @Override
@@ -41,11 +39,11 @@ public class AdvertiseFragment extends MainActivity.PlaceholderFragment implemen
 
         int type = URL;
         switch (type) {
-            case URL :
+            case URL:
                 videoView.setVideoURI(Uri.parse(VIDEO_URL));
                 break;
 
-            case SDCARD :
+            case SDCARD:
                 String path = Environment.getExternalStorageDirectory() + "/TestVideo6.mp4";
                 videoView.setVideoPath(path);
                 break;
