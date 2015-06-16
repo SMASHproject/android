@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_height="match_parent"
+    android:paddingLeft="10dp" android:paddingRight="10dp"
+    android:background="#fff" android:layout_width="300dp"
+    android:paddingTop="10dp">
+
+    <EditText
+        android:id="@+id/txtUsername"
+
+        android:inputType="numberDecimal"
+        android:digits="0123456789"
+        android:imeOptions="flagNoExtractUi"
+
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+
+        android:hint="아이디(휴대폰 번호)">
+        <requestFocus></requestFocus>
+    </EditText>
+
+    <EditText
+        android:id="@+id/txtPassword"
+
+        android:inputType="numberPassword"
+        android:imeOptions="flagNoExtractUi"
+
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+
+        android:hint="비밀번호(숫자 4자리)" >
+    </EditText>
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:id="@+id/linearLayout1">
+
+        <Button
+            android:id="@+id/btnLogin"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+
+            android:text="Login">
+        </Button>
+
+        <Button
+            android:id="@+id/btnCancel"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+
+            android:text="Cancel">
+        </Button>
+    </LinearLayout>
+</LinearLayout>

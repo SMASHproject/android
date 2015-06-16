@@ -23,6 +23,7 @@ public class MainFragment extends MainActivity.PlaceholderFragment implements Vi
 
     //constants
     public final static int ORDER_BUTTON_CLICKED = 0x10;
+    public final static int SIGNUP_BUTTON_CLICKED = 0x20;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,7 @@ public class MainFragment extends MainActivity.PlaceholderFragment implements Vi
         if(id == R.id.button_to_order){
             listener.onMenuClicked(ORDER_BUTTON_CLICKED);
         }else if(id == R.id.button_to_signup){
-
+            listener.onMenuClicked(SIGNUP_BUTTON_CLICKED);
         }
     }
 

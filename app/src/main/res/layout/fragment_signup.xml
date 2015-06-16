@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="10dp"
+
+        android:text="가입하기"
+        android:textSize="15dp"
+        android:textAlignment="center"/>
+
+    <EditText
+        android:id="@+id/signup_id"
+
+        android:inputType="numberDecimal"
+        android:digits="0123456789"
+        android:imeOptions="flagNoExtractUi"
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="10dp"
+
+        android:textSize="10dp"
+        android:hint="'-'없이 휴대폰 번호 11자리 입력"/>
+
+    <EditText
+        android:id="@+id/signup_pwd"
+
+        android:inputType="numberPassword"
+        android:imeOptions="flagNoExtractUi"
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="10dp"
+
+        android:textSize="10dp"
+        android:hint="4자리 숫자의 비밀번호"/>
+
+    <Button
+        android:id="@+id/signup_btn"
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+
+        android:text="가입신청" />
+
+    <Button
+        android:id="@+id/signup_backBtn"
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+
+        android:text="뒤로가기" />
+
+    <ImageView
+        android:id="@+id/signup_bg"
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"/>
+
+</LinearLayout>

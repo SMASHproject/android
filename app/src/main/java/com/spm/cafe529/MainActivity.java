@@ -20,8 +20,12 @@ public class MainActivity extends FragmentActivity implements OnMenuClickListene
             private final static int MAIN_FRAGMENT = 2;
             private final static int MENU_FRAGMENT = 3;
             private final static int WISHLIST_FRAGMENT = 4;
+            private final static int SIGNUP_FRAGMENT = 5;
 
             private final static int ORDER_BUTTON_CLICKED = 0x10;
+            private final static int SIGNUP_BUTTON_CLICKED = 0x20;
+            private final static int MAIN_BUTTON_CLICKED = 0x30;
+
 
 
             Fragment dummyFragment;
@@ -83,6 +87,8 @@ public class MainActivity extends FragmentActivity implements OnMenuClickListene
                     fragment = new WishlistFragment();
                     wishlistFragment = (WishlistFragment) fragment;
                     break;
+                case SIGNUP_FRAGMENT:
+                    fragment = new SignUpFragment();
             }
 
             return fragment;
@@ -99,7 +105,14 @@ public class MainActivity extends FragmentActivity implements OnMenuClickListene
             fragmentManager.beginTransaction().replace(R.id.main_layout,PlaceholderFragment.newInstance(MENU_FRAGMENT)).commit();
             fragmentManager.beginTransaction().replace(R.id.sub_layout,PlaceholderFragment.newInstance(WISHLIST_FRAGMENT)).commit();
         }
-
+        else if (selector == SIGNUP_BUTTON_CLICKED) {
+            FragmentManager fragmentManager = dummyFragment.getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.sub_layout, PlaceholderFragment.newInstance(SIGNUP_FRAGMENT)).commit();
+        }
+        else if (selector == MAIN_BUTTON_CLICKED) {
+            FragmentManager fragmentManager = dummyFragment.getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.sub_layout, PlaceholderFragment.newInstance(MAIN_FRAGMENT)).commit();
+        }
     }
 
     @Override
@@ -107,7 +120,7 @@ public class MainActivity extends FragmentActivity implements OnMenuClickListene
 
         if(keyCode == KeyEvent.KEYCODE_BACK){
             Log.v("KEy Pressed", "BACK KEY");
-            return true; //³ªÁß¿¡ ¹Ù²ãÁÙ°Í
+            return true; //ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½Ù²ï¿½ï¿½Ù°ï¿½
         }
 
         return super.onKeyDown(keyCode, event);
